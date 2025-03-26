@@ -12,8 +12,15 @@
     <header>
         <h1>Movie Watch</h1>
         <input type="text" id="search" placeholder="Search movies..." onkeyup="searchMovies()">
+        <button id="themeToggle">🌙</button>
     </header>
 
+    <h2>🎬 Live Streaming</h2>
+    <div class="live-container" id="liveContainer">
+        <!-- Live streams will be loaded here dynamically -->
+    </div>
+
+    <h2>📽️ Movies</h2>
     <div class="movies-container" id="moviesContainer">
         <!-- Movies will be loaded here dynamically -->
     </div>
@@ -30,6 +37,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.5.2/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.2.1/hls.min.js"></script>
     <script src="script.js"></script>
 </body>
-        </html>
+</html>
