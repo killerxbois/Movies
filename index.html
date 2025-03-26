@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Watch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.5.2/video-js.min.css">
 </head>
 <body>
 
@@ -18,13 +19,17 @@
     </div>
 
     <div id="playerContainer" class="player-container">
-        <video id="videoPlayer" controls>
+        <video id="videoPlayer" class="video-js vjs-big-play-centered" controls preload="auto" width="800" height="450">
             <source src="" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <button onclick="closePlayer()">Close</button>
+        <a id="downloadBtn" href="#" download>
+            <button class="download-btn">Download</button>
+        </a>
+        <button class="close-btn" onclick="closePlayer()">Close</button>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/8.5.2/video.min.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+        </html>
