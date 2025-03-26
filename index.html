@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Watch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Movie Watch</h1>
+        <input type="text" id="search" placeholder="Search movies..." onkeyup="searchMovies()">
+    </header>
+
+    <div class="movies-container" id="moviesContainer">
+        <!-- Movies will be loaded here dynamically -->
+    </div>
+
+    <div id="playerContainer" class="player-container">
+        <video id="videoPlayer" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button onclick="closePlayer()">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
