@@ -28,8 +28,15 @@ async function fetchMovies() {
 }
 
 function playMovie(src) {
-    document.getElementById("videoPlayer").src = src;
+    let player = document.getElementById("videoPlayer");
+    let downloadBtn = document.getElementById("downloadBtn");
+
+    player.src = src;
+    player.load();
     document.getElementById("playerContainer").style.display = "flex";
+    
+    // Set download link
+    downloadBtn.href = src;
 }
 
 function closePlayer() {
