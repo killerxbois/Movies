@@ -65,3 +65,24 @@ video {
 .download-btn {
     background: green;
 }
+.live-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.live {
+    margin: 15px;
+    cursor: pointer;
+}
+
+.live img {
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+}
