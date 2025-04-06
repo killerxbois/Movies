@@ -1,66 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instagram Reel Downloader</title>
+  <title>Instagram Reels Downloader</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #fafafa;
+      background: #f2f2f2;
+      padding: 50px;
       text-align: center;
-      padding: 40px;
     }
-    input {
-      width: 80%;
+    input, button {
       padding: 10px;
       font-size: 16px;
-      margin: 10px 0;
+      margin: 10px;
+      width: 80%;
     }
     button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #0095f6;
+      background-color: #3897f0;
       color: white;
       border: none;
-      cursor: pointer;
-    }
-    #result {
-      margin-top: 20px;
     }
     video {
-      max-width: 100%;
       margin-top: 20px;
+      max-width: 100%;
     }
   </style>
 </head>
 <body>
-  <h1>Instagram Reel Downloader</h1>
-  <input type="text" id="reelUrl" placeholder="Paste Instagram reel link here"/>
-  <br/>
+  <h2>Instagram Reels Downloader</h2>
+  <input type="text" id="reelUrl" placeholder="Paste Instagram Reels URL here" />
+  <br>
   <button onclick="downloadReel()">Download</button>
+
   <div id="result"></div>
 
   <script>
-    function downloadReel() {
-      const url = document.getElementById('reelUrl').value;
-      fetch("api.php", {
-        method: "POST",
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: "url=" + encodeURIComponent(url)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.video) {
-          document.getElementById('result').innerHTML = `
-            <video controls src="${data.video}"></video>
-            <br/>
-            <a href="${data.video}" download>Download Video</a>
+    async function downloadReel() {
+      const url = document.getElementById("reelUrl").value;
+
+      const options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'e94387c2c4msh307990a8b29b65dp1575f3jsn1f555c77aa4c',
+          'X-RapidAPI-Host': 'instagram-downloader-download-instagram-reels-videos.p.rapidapi.com'
+        }
+      };
+
+      const apiUrl = `https://instagram-downloader-download-instagram-videos-stories.p.rapidapi.com/index?url=${encodeURIComponent(url)}`;
+
+      try {
+        const res = await fetch(apiUrl, options);
+        const data = await res.json();
+
+        if (data.media) {
+          document.getElementById("result").innerHTML = `
+            <video controls src="${data.media}" autoplay muted></video>
+            <br><a href="${data.media}" download>Download Video</a>
           `;
         } else {
-          document.getElementById('result').innerText = "Video not found or private.";
+          document.getElementById("result").innerText = "Unable to fetch video.";
         }
-      });
+      } catch (err) {
+        console.error(err);
+        document.getElementById("result").innerText = "Error fetching the video.";
+      }
     }
   </script>
 </body>
